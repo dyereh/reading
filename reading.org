@@ -1,2 +1,111 @@
 #+TITLE: Reading
 * Code complete
+** [[pdf:Code-Complete_2nd-Edition.pdf::46][Chapter 2]] - Metaphors for a Richer Understanding of Software Development
+Metaphors are important because they allow you to leverage your understanding of a familiar topic to better unsterand a less familiar topic.
+
+Metaphores are useful tools but we should be careful not to overextend them lest we risk the breakdown of the metaphor muddying our understanding of a concept.
+
+Software is more like constructing a building than writing a letter
+
+| Construction a building                   | Writing a letter                  |
+|-------------------------------------------+-----------------------------------|
+| Requires many people                      | Requires 1 person                 |
+| Requies constant maintanence              | Once you've mailed it you're done |
+| Re-use of designs is generally  preffered | Orginallity is desirable          |
+
+Saying that we "write" software is really a misnomer. We **construct** software. The writing metaphor implies a software-development process that's too simple and rigid to be healthy.
+
+** [[pdf:Code-Complete_2nd-Edition.pdf::60][Chapter 3]] - Measure Twice, Cut Once: Upstream Prerequisites
+
+Quality **must** be empahized from the beginning of the project
+
+*** Causes of incomplete preparation
+- Devs assigned to prep tasks don't have enough expertise to carry out prep assignements
+- Can't resist urge to prematurely code
+- Managers are notoriously unsympathetic to programmers who spend time on construction prerequisites
+  - Call the WIP syncrom: Why Isn't Same Coding ANything?
+  - Ways to deal with this
+    + Start coding right away as per manager request
+    + Pretend to code when you're not (since proper prep lets you get the job done faster anyway). This is a questionable alternative
+    + Educate boss to the nuance of technical projects and importance of preparation
+    + Find another job.. lol
+*** [[pdf:Code-Complete_2nd-Edition.pdf::64][Why Prerequisites are REQUIRED before construction]]
+**** Logic
+- Must understand what we want to build so we don't waste time & money building the wrong thing
+- Users often don't know what they really want at first - must help them figure this out
+
+**** Analogy
+- Building SW systems is like any other project that requires time and money
+- You don't start building a house till you have blueprints. Having a technical plan counts just as much in SW
+- A contractor building a housing development doesn't need to know every detail of every house, but certain details such as surveys, electrical lines, etc are prerequisites
+
+**** Data
+- Puring design errors early on in a project are 10-100x less expensive then fixing them later on
+- We should find errors in our design/prerequisites as early as possible
+
+*** Prerequisites
+**** Problem Definition
+- Clear statement of the problem that the system is supposed to solve
+- Should **NOT** reference any possible solutions
+- Should describe the problem from the user's point of view
+
+**** Explicit Requirements
+- Explicit requirements help ensure the user (rather than the programmer) drives the system's functionailty
+- Reduces arguemnts and helps minimize change to system after development begins
+- Requirements will always change, but this activity seeks to minimize this change
+- [[pdf:Code-Complete_2nd-Edition.pdf::77][How to handle change]]
+  + Make sure everyone know the cost of the change
+  + Set up a change control procedure so requesting/implementing changes is standardize and captured
+  + Use development approches that accomodate change
+  + Evaluate the incremental business value associated with the requirements change
+- [[pdf:Code-Complete_2nd-Edition.pdf::79][Requirements checklist]]
+
+**** Architecture - [[pdf:Code-Complete_2nd-Edition.pdf::91][Checklist]]
+- This is the high level framework that will hold the more detaield parts of the design.
+- Quality of the architecture determins the conceptuatl integrity of the system
+
+***** Program Organization
+- Description of the system in broad terms (well defined major building blocks)
+- Each building block is a clear area of responsibility
+
+***** Major Classes
+Should discuss major classes reasons this design is preffered over other options
+
+***** Data design
+How data is orgnaized and accessed
+
+***** Business Rules
+Any general rules that must always be followed (ex no data that is older than X should ever be used)
+
+***** User Interface
+How will we interact with the SW? Architecture should be modular so that UI's can we swapped in and out.
+
+***** Resource managerment & Performance
+Discuss resource constraints & performance requirements
+
+***** Security
+
+***** [[pdf:Code-Complete_2nd-Edition.pdf::86][Error processing]]
+- Corrective or detective? (Recover form errors or continue to run as if nothing happened/quit)
+- Active or pasisve (can the system system anticipate erors or respond to them when they can't be avoided)
+- How are errors propagated
+- How are error messages handled? This should be common across the entire architecture
+- How are exception handled
+- What is responsibility of each class for validating its input data?
+
+***** [[pdf:Code-Complete_2nd-Edition.pdf::87][Fault Tolerance]] - when an error happens
+- Try again
+- Auxillary code to run
+- Voting algorithm
+- Replace erroneous value with phony value that is known to have a benign effect
+
+***** Over Engineering
+The chain isn't as storng as the weakest link. It's as weak as all the weak links multiplied together. Each component may have to be somewhat overengineered to ensure the entire system meets robustness requirements
+
+***** Buy vs Build
+We must justify why custom-built components surpas ready-made libraries
+
+***** Change strategy
+Architecture must clearly describe a strategy for handling changes.
+
+** [[pdf:Code-Complete_2nd-Edition.pdf::98][Chapter 4]] - Key Construction Ideas
